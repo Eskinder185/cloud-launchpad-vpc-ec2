@@ -1,0 +1,2 @@
+docs/* linguist-documentation
+*.ps1 linguist-language=PowerShell

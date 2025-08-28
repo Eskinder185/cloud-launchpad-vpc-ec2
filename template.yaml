@@ -1,20 +1,20 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Cloud Launchpad: VPC + EC2 — beginner-friendly re/Start lab template.
+Description: "Cloud Launchpad: VPC + EC2 - beginner-friendly reStart lab template."
 
 Parameters:
   ProjectName:
     Type: String
     Default: cloud-launchpad
-    Description: Used in Name tags to make resources easy to find.
+    Description: "Used in Name tags to make resources easy to find."
   InstanceType:
     Type: String
     Default: t3.micro
     AllowedValues: [t3.micro, t2.micro]
-    Description: EC2 size (lab default is t3.micro).
+    Description: "EC2 size (lab default is t3.micro)."
   LatestAmazonLinuxAMI:
     Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
     Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
-    Description: SSM path for the latest Amazon Linux 2 AMI.
+    Description: "SSM path for the latest Amazon Linux 2 AMI."
 
 Resources:
   VPC:
@@ -54,7 +54,7 @@ Resources:
   InstanceSG:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: Allow SSH from anywhere (lab) and all egress
+      GroupDescription: "Allow SSH from anywhere (lab) and all egress"
       VpcId: !Ref VPC
       SecurityGroupIngress:
         - IpProtocol: tcp
@@ -85,14 +85,14 @@ Resources:
 
 Outputs:
   VpcId:
-    Description: VPC ID
+    Description: "VPC ID"
     Value: !Ref VPC
   PrivateSubnetId:
-    Description: Private Subnet ID
+    Description: "Private Subnet ID"
     Value: !Ref PrivateSubnet
   SecurityGroupId:
-    Description: Security Group ID
+    Description: "Security Group ID"
     Value: !Ref InstanceSG
   InstanceId:
-    Description: EC2 Instance ID
+    Description: "EC2 Instance ID"
     Value: !Ref Instance
